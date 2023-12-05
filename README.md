@@ -17,6 +17,19 @@ The client software is relatively simple,
 <img src="https://github.com/heddhshan/BlockChain_BinaryOption/releases/download/BinaryOptions/2.png"> <br>
 
 <em>
-This client is developed based on .net 6.0, using SQLSever database (you can install SQLServer Express or Localdb database), running on windows 10 or above. You can directly download the bin file "Bin_BinaryOptions_20231205.zip" from the release page (https://github.com/heddhshan/BlockChain_BinaryOption/releases/tag/BinaryOptions) to run.
+This client is developed based on .net 6.0, using SQLSever database (you can install SQLServer Express or Localdb database), running on windows 10 or above. You can directly download the bin file "Bin_BinaryOptions_20231205.zip" from the release page (https://github.com/heddhshan/BlockChain_BinaryOption/releases/tag/BinaryOptions) to run "BlockChain.BinaryOptions.exe".
 </em>
 
+
+
+<br/>
+<br/>
+<br/>
+   
+The demo video is "BlockChainBinaryOptions.mp4", it's url is "https://github.com/heddhshan/BlockChain_BinaryOption/releases/download/BinaryOptions/BlockChainBinaryOptions.mp4", please download and watch.
+ <br/>
+
+  <video width="320" height="240" controls>
+        <source src="https://github.com/heddhshan/BlockChain_BinaryOption/releases/download/BinaryOptions/BlockChainBinaryOptions.mp4" type="video/mp4">
+  </video>
+    
