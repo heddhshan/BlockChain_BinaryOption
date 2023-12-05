@@ -1,0 +1,339 @@
+﻿<Window x:Class="BlockChain.BinaryOptions.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlockChain.BinaryOptions"
+        xmlns:local_share="clr-namespace:BlockChain.Share;assembly=BlockChain.Share"
+        mc:Ignorable="d" Closing="Window_Closing"
+         Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
+        Title="Binary Options"  MinHeight="800" MinWidth="1280" Height="800" Width="1280">
+
+
+    <Window.Resources>
+
+        <local_share:LanguageHelper x:Key="LanguageHelper"></local_share:LanguageHelper>
+        <local_share:RRColorConvert x:Key="RRColorConvert"></local_share:RRColorConvert>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="2,0" />
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style x:Key="NumberStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,5" />
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+
+        <Style x:Key="NumberStyle2" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <!--<Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="5,0" />
+        </Style>-->
+
+        <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+        </Style>
+
+        <Style x:Key="TextStyle2" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TabControl Grid.Row="0" Name="TabControlMain" SelectionChanged="OnTabControlSelectionChanged">
+
+                <TabItem  Width="160">
+
+                    <TabItem.Header >
+                        <Grid  HorizontalAlignment="Left"  Width="150">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="Image\bo.jpeg" Width="30" Height="30"></Image>
+
+                            <Label Grid.Column="1" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='二元期权'}" ></Label>
+                        </Grid>
+                    </TabItem.Header>
+                    
+                    <!--todo-->
+
+                    <TabControl x:Name="TabControlBinaryOptions" Margin="0,5" SelectionChanged="TabControlBinaryOptions_SelectionChanged">
+                        <TabControl.Resources>
+                            <Style TargetType="{x:Type TabPanel}">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </TabControl.Resources>
+
+
+                        <TabItem>
+                            <TabItem.Header>
+                                <Grid MinWidth="200" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Name="LabelPoolToken0_300" Margin="0" Width="auto" Content="?"  Foreground="Green"></Label>
+                                    <Label Grid.Column="1" Content="/" Margin="0"></Label>
+                                    <Label Grid.Column="2" Name="LabelPoolToken1_300" Margin="0" Width="auto" Content="?"  Foreground="Red"></Label>
+                                    <Label Grid.Column="4" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='5分钟[300秒]期权'}" Margin="0"></Label>
+                                    <Label Grid.Column="5" Content="[UniswapV3]" Margin="0" Foreground="Gray"></Label>
+                                </Grid>
+                            </TabItem.Header>
+
+                            <ScrollViewer VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" Width="1100">
+                                <local:UserControlBinaryOptions  x:Name="UserControlBinaryOptions_300"></local:UserControlBinaryOptions>
+                            </ScrollViewer>
+                            
+                        </TabItem>
+
+
+                        <TabItem >
+                            <TabItem.Header>
+                                <Grid MinWidth="200" Height="25">
+                                    <Grid MinWidth="200" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Name="LabelToken0_ChainLink300" Margin="0" Width="auto" Content="?"  Foreground="Green"></Label>
+                                        <Label Grid.Column="1" Content="/" Margin="0"></Label>
+                                        <Label Grid.Column="2" Name="LabelToken1_ChainLink300" Margin="0" Width="auto" Content="?"  Foreground="Red"></Label>
+                                        <Label Grid.Column="4" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='5分钟[300秒]期权'}" Margin="0"></Label>
+                                        <Label Grid.Column="5" Content="[ChainLink]" Margin="0" Foreground="Gray"></Label>
+                                    </Grid>
+                                </Grid>
+                            </TabItem.Header>
+
+                            <ScrollViewer VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" Width="1100">
+                                <local:UserControlBinaryOptions  x:Name="UserControlBinaryOptions_ChainLink300"></local:UserControlBinaryOptions>
+                            </ScrollViewer>
+
+                        </TabItem>
+
+
+                        <TabItem >
+                            <TabItem.Header>
+                                <Grid MinWidth="200" Height="25">
+                                    <Grid MinWidth="200" VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Name="LabelToken0_ChainLink3600" Margin="0" Width="auto" Content="?"  Foreground="Green"></Label>
+                                        <Label Grid.Column="1" Content="/" Margin="0"></Label>
+                                        <Label Grid.Column="2" Name="LabelToken1_ChainLink3600" Margin="0" Width="auto" Content="?"  Foreground="Red"></Label>
+                                        <Label Grid.Column="4" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='1小时（3600秒）期权'}" Margin="0"></Label>
+                                        <Label Grid.Column="5" Content="[ChainLink]" Margin="0" Foreground="Gray"></Label>
+                                    </Grid>
+                                </Grid>
+                            </TabItem.Header>
+
+                            <ScrollViewer VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10" Width="1100">
+                                <local:UserControlBinaryOptions  x:Name="UserControlBinaryOptions_ChainLink3600"></local:UserControlBinaryOptions>
+                            </ScrollViewer>
+
+                        </TabItem>
+
+                        
+                       
+                        
+                    </TabControl>
+
+
+                </TabItem>
+
+                <TabItem >
+                    <TabItem.Header>
+                        <StackPanel x:Name="StackPanelMenu" Orientation="Horizontal"  Margin="0">
+
+                            <Button Click="OnAccountAddress"  Width="120" VerticalAlignment="Center" Margin="3,0">
+                                <Grid  HorizontalAlignment="Left" Width="110">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image  Grid.Column="0" Source="Image\account0.jpg" Width="30" Height="30"></Image>
+                                    <TextBlock Grid.Column="1" Text="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='账号'}" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </Button>
+
+                            <Button Click="OnAddToken"  Width="120" VerticalAlignment="Center" Margin="3,0">
+                                <Grid  HorizontalAlignment="Left"  Width="110">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image  Grid.Column="0" Source="Image\token.png" Width="30" Height="30"></Image>
+                                    <TextBlock Grid.Column="1" Text="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='Token'}" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </Button>
+
+                            <Button x:Name="ButtonTools"  Click="ButtonTools_OnClick"  VerticalAlignment="Center" Margin="3,0">
+                                <Grid  HorizontalAlignment="Left"  Width="110">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="35"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image  Grid.Column="0" Source="Image\tools.png" Width="30" Height="30"></Image>
+                                    <Menu x:Name="MenuTools"  Grid.Column="1"   HorizontalAlignment="Center" Background="{Binding ElementName=ButtonTools, Path=Background}" >
+                                        <MenuItem Name="MenuItemTools" Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='系统和工具'}"  Height="30"  >
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='Dapp Client'}" Click="ButtonGameList_OnClick">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\youxi.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <Separator></Separator>
+
+                                            <MenuItem Header="TEST（goerli）" Click="OnTestHelper">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\account.jpg"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            
+                                            <Separator></Separator>
+
+                                            <MenuItem Header="Transfer" Click="OnTransfer">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\s_transfer.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <Separator></Separator>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='事务执行状态'}" Click="OnTxExeStatus">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\zhuangtai.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <Separator></Separator>
+
+                                            <!--<MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='测试辅助工具'}" Click="OnDeployment">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\deployment.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>-->
+
+                                            <Separator></Separator>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='Web3 Url'}" Click="OnWeb3Url">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\web3.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='数据库'}" Click="OnDataBase">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\database.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='多语言'}" Click="OnLanguage">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\multi-language.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='通知'}" Click="OnNotice">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\Notice.jpg"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='关于'}" Click="OnAbout">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\guanyu.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <Separator></Separator>
+
+                                            <MenuItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='退出'}" Click="OnSysExit">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Image\tuichu.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                        </MenuItem>
+                                    </Menu>
+                                </Grid>
+                            </Button>
+
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+
+            </TabControl>
+
+            <Border  Grid.Row="1" Background="Blue"></Border>
+            <local_share:UserControlStatusBar Grid.Row="2" x:Name="UcStatusBar" VerticalAlignment="Center" />
+
+        </Grid>
+
+    </Grid>
+
+
+</Window>

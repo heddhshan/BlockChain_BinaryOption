@@ -1,0 +1,177 @@
+﻿<Window x:Class="BlockChain.BinaryOptions.WindowLiq"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlockChain.BinaryOptions"
+        xmlns:local_share="clr-namespace:BlockChain.Share;assembly=BlockChain.Share"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" 
+        Title="流动性管理" Height="600" Width="800">
+
+    <Window.Resources>
+        <local_share:LanguageHelper x:Key="LanguageHelper"></local_share:LanguageHelper>
+      
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style x:Key="NumberStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,5" />
+            <Setter Property="TextAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0,0,10,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <!--<Setter Property="HorizontalAlignment" Value="Right" />-->
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Height" Value="35" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="5"  Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Height="150" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='用户地址:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+            <Button  Name="ButtonUser" Grid.Row="0" Grid.Column="1" Content="?" HorizontalAlignment="Left" 
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Grid.ColumnSpan="2" Click="TagOnGotoAddress"></Button>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='期权合约:'}" HorizontalAlignment="Right"  Foreground="Gray"></Label>
+            <Button x:Name="ButtonContract" Grid.Row="1" Grid.Column="1" Content="?" HorizontalAlignment="Left"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Grid.ColumnSpan="2" Click="TagOnGotoAddress"></Button>
+            <Label Grid.Row="1" Grid.Column="2" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='投注Token:'}" HorizontalAlignment="Right"  Foreground="Gray"></Label>
+            <Button x:Name="ButtonToken" Grid.Row="1" Grid.Column="3" Content="?" HorizontalAlignment="Left"
+                             Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  Click="TagOnGotoAddress"></Button>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='用户的流动性值:'}" HorizontalAlignment="Right"  Foreground="Gray"></Label>
+            <Label  Name="LabelUserLiqValue" Grid.Row="2" Grid.Column="1" Content="?" Foreground="Blue"></Label>
+            <Label Grid.Row="2" Grid.Column="2" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='对应投注Token数量:'}" HorizontalAlignment="Right"  Foreground="Gray"></Label>
+            <Label Name="LabelUserLiqAmount" Grid.Row="2" Grid.Column="3" Content="?" Foreground="Blue"></Label>
+        
+        </Grid>
+
+        <TabControl Grid.Row="1" Margin="5" Name="TabControlMain"  SelectionChanged="TabControl_SelectionChanged" >
+            <TabItem Header="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='增加流动性'}" MinWidth="150">
+
+                <Grid Height="250" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="240"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition  Width="240"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='机率(%):'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                        <TextBox x:Name="TextBoxAddOption1" Grid.Row="1" Grid.Column="1" Text="51.00"  Width="100" Foreground="Green"></TextBox>
+                        <TextBox x:Name="TextBoxAddOption2" Grid.Row="1" Grid.Column="1" Text="49.00"  Width="100" Foreground="Red"></TextBox>
+                    </StackPanel>
+                    <Label Grid.Row="0" Grid.Column="2" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='涨跌的机率和要为100%。'}" Foreground="Gray"></Label>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='机率浮动值(%):'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <TextBox x:Name="TextBoxAddFloatPer" Grid.Row="1" Grid.Column="1" Text="1.0" ></TextBox>
+                    <Label Grid.Row="1" Grid.Column="2" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='浮动值最大为5%，最小为0.1%。'}" Foreground="Gray"></Label>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='用户的投注Token余额:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <Label x:Name="LabelUserBalance" Grid.Row="2" Grid.Column="1" ></Label>
+                    <Button x:Name="ButtonUserBetToken" Grid.Row="2" Grid.Column="2" Content="?" HorizontalAlignment="Left" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  Click="TagOnGotoAddress"></Button>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='增加投注Token金额:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <TextBox  x:Name="TextBoxAddAmount"  Grid.Row="3" Grid.Column="1" Text="" ></TextBox>
+                    <Label Grid.Row="3" Grid.Column="2" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='Token需要预先授权（Approve）。'}" Foreground="Gray"></Label>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='事务限定时间（秒）:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <TextBox  x:Name="TextBoxAddLine"  Grid.Row="4" Grid.Column="1" Text="120" ></TextBox>
+
+                    <Button Grid.Row="5" Grid.Column="1" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='提交增加流动性事务'}" Click="Click_AddLiq"></Button>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="减少流动性"  MinWidth="150">
+
+                <Grid Height="200" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="240"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition  Width="240"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='删除的流动性值:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <TextBox x:Name="TextBoxRemoveLiq" Grid.Row="0" Grid.Column="1" Text="" LostFocus="TextBoxRemoveLiq_LostFocus" ></TextBox>
+                    <CheckBox x:Name="CheckBoxRemoveLiqAll" Grid.Row="0" Grid.Column="2"  Checked="CheckBoxRemoveLiqAll_Checked" VerticalAlignment="Center" Content="所有"></CheckBox>
+
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='对应投注Token的金额:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <Label x:Name="LabelRemoveAmount" Grid.Row="1" Grid.Column="1" Content="?" ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='删除流动性的时候取现:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <CheckBox x:Name="CheckBoxRemoveWithdraw" Grid.Row="2" Grid.Column="1" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='事务限定时间（秒）:'}" HorizontalAlignment="Right" Foreground="Gray"></Label>
+                    <TextBox  x:Name="TextBoxRemoveLine" Grid.Row="3" Grid.Column="1" Text="120" ></TextBox>
+
+                    <Button Grid.Row="4" Grid.Column="1" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='提交删除流动性事务'}" Click="Click_RemoveLiq"></Button>
+                    
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal" >
+            <Button Click="Click_Refresh" Width="120" HorizontalAlignment="Right" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='刷新'}" ></Button>
+            <Button Click="Click_Close" Width="120" HorizontalAlignment="Right" Content="{Binding Converter={ StaticResource LanguageHelper}, ConverterParameter='关闭'}"></Button>
+        </StackPanel>
+
+        
+    </Grid>
+    
+</Window>

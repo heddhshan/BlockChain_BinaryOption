@@ -1,0 +1,7 @@
+{
+    "projectName": "BlockChain.BinaryOptions",
+    "namespace": "BlockChain.BinaryOptions.Contract",
+    "lang":0,
+    "autoCodeGen":true,
+    "projectPath": "../Contract"
+}

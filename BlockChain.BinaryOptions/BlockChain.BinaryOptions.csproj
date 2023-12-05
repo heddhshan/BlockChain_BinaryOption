@@ -1,0 +1,189 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Contract\Address\**" />
+    <Compile Remove="Contract\AggregatorInterface\**" />
+    <Compile Remove="Contract\AggregatorV3Interface\**" />
+    <Compile Remove="Contract\artifacts\**" />
+    <Compile Remove="Contract\BinaryOptionsBase\**" />
+    <Compile Remove="Contract\BinaryOptionsChainlink\**" />
+    <Compile Remove="Contract\BinaryOptionsFactory\**" />
+    <Compile Remove="Contract\BinaryOptionsUniswapV3\**" />
+    <Compile Remove="Contract\BinaryOptions\**" />
+    <Compile Remove="Contract\bin\**" />
+    <Compile Remove="Contract\Context\**" />
+    <Compile Remove="Contract\ERC20\**" />
+    <Compile Remove="Contract\IERC20\**" />
+    <Compile Remove="Contract\INonfungiblePositionManager\**" />
+    <Compile Remove="Contract\IUniswapV3Factory\**" />
+    <Compile Remove="Contract\IUniswapV3Pool\**" />
+    <Compile Remove="Contract\IUserCallHistory\**" />
+    <Compile Remove="Contract\PlayToken\**" />
+    <Compile Remove="Contract\SafeERC20\**" />
+    <Compile Remove="Contract\Stringutils\**" />
+    <EmbeddedResource Remove="Contract\Address\**" />
+    <EmbeddedResource Remove="Contract\AggregatorInterface\**" />
+    <EmbeddedResource Remove="Contract\AggregatorV3Interface\**" />
+    <EmbeddedResource Remove="Contract\artifacts\**" />
+    <EmbeddedResource Remove="Contract\BinaryOptionsBase\**" />
+    <EmbeddedResource Remove="Contract\BinaryOptionsChainlink\**" />
+    <EmbeddedResource Remove="Contract\BinaryOptionsFactory\**" />
+    <EmbeddedResource Remove="Contract\BinaryOptionsUniswapV3\**" />
+    <EmbeddedResource Remove="Contract\BinaryOptions\**" />
+    <EmbeddedResource Remove="Contract\bin\**" />
+    <EmbeddedResource Remove="Contract\Context\**" />
+    <EmbeddedResource Remove="Contract\ERC20\**" />
+    <EmbeddedResource Remove="Contract\IERC20\**" />
+    <EmbeddedResource Remove="Contract\INonfungiblePositionManager\**" />
+    <EmbeddedResource Remove="Contract\IUniswapV3Factory\**" />
+    <EmbeddedResource Remove="Contract\IUniswapV3Pool\**" />
+    <EmbeddedResource Remove="Contract\IUserCallHistory\**" />
+    <EmbeddedResource Remove="Contract\PlayToken\**" />
+    <EmbeddedResource Remove="Contract\SafeERC20\**" />
+    <EmbeddedResource Remove="Contract\Stringutils\**" />
+    <None Remove="Contract\Address\**" />
+    <None Remove="Contract\AggregatorInterface\**" />
+    <None Remove="Contract\AggregatorV3Interface\**" />
+    <None Remove="Contract\artifacts\**" />
+    <None Remove="Contract\BinaryOptionsBase\**" />
+    <None Remove="Contract\BinaryOptionsChainlink\**" />
+    <None Remove="Contract\BinaryOptionsFactory\**" />
+    <None Remove="Contract\BinaryOptionsUniswapV3\**" />
+    <None Remove="Contract\BinaryOptions\**" />
+    <None Remove="Contract\bin\**" />
+    <None Remove="Contract\Context\**" />
+    <None Remove="Contract\ERC20\**" />
+    <None Remove="Contract\IERC20\**" />
+    <None Remove="Contract\INonfungiblePositionManager\**" />
+    <None Remove="Contract\IUniswapV3Factory\**" />
+    <None Remove="Contract\IUniswapV3Pool\**" />
+    <None Remove="Contract\IUserCallHistory\**" />
+    <None Remove="Contract\PlayToken\**" />
+    <None Remove="Contract\SafeERC20\**" />
+    <None Remove="Contract\Stringutils\**" />
+    <Page Remove="Contract\Address\**" />
+    <Page Remove="Contract\AggregatorInterface\**" />
+    <Page Remove="Contract\AggregatorV3Interface\**" />
+    <Page Remove="Contract\artifacts\**" />
+    <Page Remove="Contract\BinaryOptionsBase\**" />
+    <Page Remove="Contract\BinaryOptionsChainlink\**" />
+    <Page Remove="Contract\BinaryOptionsFactory\**" />
+    <Page Remove="Contract\BinaryOptionsUniswapV3\**" />
+    <Page Remove="Contract\BinaryOptions\**" />
+    <Page Remove="Contract\bin\**" />
+    <Page Remove="Contract\Context\**" />
+    <Page Remove="Contract\ERC20\**" />
+    <Page Remove="Contract\IERC20\**" />
+    <Page Remove="Contract\INonfungiblePositionManager\**" />
+    <Page Remove="Contract\IUniswapV3Factory\**" />
+    <Page Remove="Contract\IUniswapV3Pool\**" />
+    <Page Remove="Contract\IUserCallHistory\**" />
+    <Page Remove="Contract\PlayToken\**" />
+    <Page Remove="Contract\SafeERC20\**" />
+    <Page Remove="Contract\Stringutils\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Remove="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DAL\Class1.cs" />
+    <Compile Remove="Model\Class1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Contract\0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c.sol" />
+    <None Remove="Contract\BinaryOptions.old.sol" />
+    <None Remove="DataBase\BinaryOptionsDb.mdf" />
+    <None Remove="DataBase\BinaryOptionsDb_log.ldf" />
+    <None Remove="DataBase\SQLQuery.sql" />
+    <None Remove="Image\account.jpg" />
+    <None Remove="Image\Account.png" />
+    <None Remove="Image\account0.jpg" />
+    <None Remove="Image\Auction.png" />
+    <None Remove="Image\database.png" />
+    <None Remove="Image\deployment.png" />
+    <None Remove="Image\dex.png" />
+    <None Remove="Image\div.png" />
+    <None Remove="Image\Dividends.png" />
+    <None Remove="Image\guanyu.png" />
+    <None Remove="Image\multi-language.ico" />
+    <None Remove="Image\Notice.jpg" />
+    <None Remove="Image\s_transfer.png" />
+    <None Remove="Image\thank-you-ico.png" />
+    <None Remove="Image\token.png" />
+    <None Remove="Image\token1.png" />
+    <None Remove="Image\tools.png" />
+    <None Remove="Image\tuichu.png" />
+    <None Remove="Image\web3.png" />
+    <None Remove="Image\youxi.png" />
+    <None Remove="Image\zhuangtai.png" />
+    <None Remove="SplashScreen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlockChain.Common\BlockChain.Common.csproj" />
+    <ProjectReference Include="..\BlockChain.Share\BlockChain.Share.csproj" />
+    <ProjectReference Include="..\Nethereum.Uniswap-V2-and-V3-main\Nethereum.Uniswap\Nethereum.Uniswap.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\account.jpg" />
+    <Resource Include="Image\Account.png" />
+    <Resource Include="Image\account0.jpg" />
+    <Resource Include="Image\Auction.png" />
+    <Resource Include="Image\database.png" />
+    <Resource Include="Image\deployment.png" />
+    <Resource Include="Image\dex.png" />
+    <Resource Include="Image\div.png" />
+    <Resource Include="Image\Dividends.png" />
+    <Resource Include="Image\guanyu.png" />
+    <Resource Include="Image\multi-language.ico" />
+    <Resource Include="Image\Notice.jpg" />
+    <Resource Include="Image\s_transfer.png" />
+    <Resource Include="Image\thank-you-ico.png" />
+    <Resource Include="Image\token.png" />
+    <Resource Include="Image\token1.png" />
+    <Resource Include="Image\tools.png" />
+    <Resource Include="Image\tuichu.png" />
+    <Resource Include="Image\web3.png" />
+    <Resource Include="Image\youxi.png" />
+    <Resource Include="Image\zhuangtai.png" />
+    <Resource Include="SplashScreen.png" />
+  </ItemGroup>
+
+</Project>

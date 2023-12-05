@@ -1,0 +1,7 @@
+{
+    "projectName": "Nethereum.Uniswap",
+    "namespace": "Nethereum.Uniswap.V3.Contract",
+    "lang":0,
+    "autoCodeGen":true,
+    "projectPath": "../V3/Contract"
+}
